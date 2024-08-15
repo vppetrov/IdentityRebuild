@@ -1,0 +1,15 @@
+﻿@using System.Security.Claims
+@model IndexModel
+
+<form method="post">
+	@Html.AntiForgeryToken()
+	<p>Method: @(this.Context.Request.Method)</p>
+	<p>Model timestamp: @(this.Model?.Timestamp.ToString("HH:mm:ss"))</p>
+	<p>Identity:</p>
+	<ul>
+		<li>Name: @(this.Context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value)</li>
+		<li>Logged in timestamp: @(this.Context.User.Claims.FirstOrDefault(x => x.Type == "LoggedIn")?.Value)</li>
+		<li>Rebuilt timestamp: @(this.Context.User.Claims.FirstOrDefault(x => x.Type == "Rebuilt")?.Value)</li>
+	</ul>
+	<p><input type="submit"/></p>
+</form>
