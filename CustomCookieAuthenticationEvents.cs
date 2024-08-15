@@ -53,11 +53,11 @@ namespace WebApplication1
 				var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
 				// Option 1: SignOut / SignIn
-				//await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-				//await context.HttpContext.SignInAsync(
-				//	CookieAuthenticationDefaults.AuthenticationScheme,
-				//	new ClaimsPrincipal(claimsIdentity),
-				//	authProperties);
+				await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+				await context.HttpContext.SignInAsync(
+					CookieAuthenticationDefaults.AuthenticationScheme,
+					new ClaimsPrincipal(claimsIdentity),
+					authProperties);
 
 				// Option 2: SignIn only
 				//await context.HttpContext.SignInAsync(
